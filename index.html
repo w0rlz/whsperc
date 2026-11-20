@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WHS PERCUSSION — Minecraft Server Guide</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Archivo', 'Helvetica Neue', 'Arial', 'sans-serif'],
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            mono: ['IBM Plex Mono', 'monospace'],
+          },
+          colors: {
+            paper: '#f4f1ea',
+            paperdark: '#eae5d9',
+            ink: '#141413',
+            inkmuted: '#525049',
+            varsity: '#c8281e',
+            navy: '#1b365d',
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      background-color: #f4f1ea;
+      color: #141413;
+    }
+
+    /* Solid offset print shadow for primary callout boxes */
+    .print-box {
+      border: 2px solid #141413;
+      box-shadow: 4px 4px 0px #141413;
+      background-color: #f4f1ea;
+    }
+
+    /* Tactile mechanical button press */
+    .ink-btn {
+      border: 1.5px solid #141413;
+      transition: background-color 0.1s ease, color 0.1s ease, transform 0.06s ease;
+    }
+    .ink-btn:active {
+      transform: translate(1px, 1px);
+    }
+
+    /* Inline code tag styled like stamped monospace type */
+    .step-detail code {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.875em;
+      font-weight: 600;
+      background-color: #eae5d9;
+      border: 1px solid #141413;
+      padding: 1px 5px;
+      color: #141413;
+    }
+  </style>
+</head>
+<body class="min-h-screen antialiased selection:bg-varsity selection:text-paper">
+
+  <!-- ===================================================================== -->
+  <!-- EDITABLE SERVER CONFIGURATION                                         -->
+  <!-- Change any text, IP, port, or step below and save the file.           -->
+  <!-- ===================================================================== -->
+  <script id="server-config-script">
+    const SERVER_CONFIG = {
+      // Header & Title
+      serverTitle: "WHS PERCUSSION",
+      subtitleBadge: "WHS PERCUSSION MINECRAFT SERVER",
+      noticeNumber: "SHEET NO. 01 // CROSS-PLAY SMP",
+
+      // Purpose Section ("What it's for")
+      purposeHeading: "WHAT THIS SERVER IS FOR",
+      purposeText: "An official hangout and survival multiplayer world for the WHS Percussion section to build, collaborate, and hang out between rehearsals and competitions.",
+
+      // Java Edition Connection Details
+      javaPrimaryIP: "play.whspercussion.com",
+      javaFallbackIP: "play.whspercussion.com:16663",
+      javaServerName: "WHS Percussion",
+
+      // Bedrock Edition Connection Details
+      bedrockIP: "bedrock.whspercussion.com",
+      bedrockPort: "19051",
+      bedrockServerName: "WHS Percussion",
+
+      // Java Edition Steps
+      javaSteps: [
+        {
+          title: "Open Minecraft: Java Edition",
+          detail: "Launch the Minecraft Launcher on Windows, macOS, or Linux, select <code>Java Edition</code>, and click <code>Play</code>."
+        },
+        {
+          title: "Go to Multiplayer",
+          detail: "On the title screen, click <code>Multiplayer</code>. If a third-party online play warning appears, click <code>Proceed</code>."
+        },
+        {
+          title: "Select Add Server or Direct Connection",
+          detail: "Click <code>Add Server</code> to save it permanently to your server list, or click <code>Direct Connection</code> to join right away."
+        },
+        {
+          title: "Enter the Server Address",
+          detail: "Type <code>play.whspercussion.com</code> into the Server Address box. If the main domain fails to resolve on your network, use the direct port address <code>play.whspercussion.com:16663</code>."
+        },
+        {
+          title: "Join the World",
+          detail: "Click <code>Done</code>, highlight <code>WHS Percussion</code> in your server list, and click <code>Join Server</code>."
+        }
+      ],
+
+      // Bedrock Edition Steps
+      bedrockSteps: [
+        {
+          title: "Open Minecraft (Bedrock)",
+          detail: "Launch <code>Minecraft</code> on Windows, iOS, Android, or Console and click <code>Play</code>."
+        },
+        {
+          title: "Open the Servers Tab",
+          detail: "Switch to the <code>Servers</code> tab on the right side of the Play menu."
+        },
+        {
+          title: "Scroll to Add Server",
+          detail: "Scroll down past the Featured Servers list to the bottom and press <code>Add Server</code>."
+        },
+        {
+          title: "Enter Bedrock Address and Port",
+          detail: "Set Server Name to <code>WHS Percussion</code>, Server Address to <code>bedrock.whspercussion.com</code>, and Port to <code>19051</code>."
+        },
+        {
+          title: "Save and Join",
+          detail: "Press <code>Save</code> to store the server in your list, or press <code>Play</code> to connect immediately."
+        }
+      ],
+
+      // Console Note (Bedrock)
+      consoleHeading: "CONSOLE PLAYERS (XBOX, PLAYSTATION, SWITCH)",
+      consoleNote: "Consoles hide the custom server button by default. Use the <code>BedrockConnect</code> DNS method or the <code>BedrockTogether</code> mobile app on the same Wi-Fi network, or join via a friend currently online, then enter <code>bedrock.whspercussion.com</code> and port <code>19051</code>."
+    };
+  </script>
+  <!-- ===================================================================== -->
+
+  <!-- Main Printed Spec Sheet Container -->
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+
+    <!-- Top Notice Board Masthead -->
+    <header class="border-b-4 border-ink pb-5 mb-7">
+      <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+        <span id="ui-subtitle-badge" class="inline-block bg-varsity text-paper font-mono text-xs font-bold tracking-wider uppercase px-2.5 py-1">
+          WHS PERCUSSION MINECRAFT SERVER
+        </span>
+        <span id="ui-notice-number" class="font-mono text-xs font-semibold text-inkmuted uppercase tracking-wide">
+          SHEET NO. 01 // CROSS-PLAY SMP
+        </span>
+      </div>
+
+      <h1 id="ui-server-title" class="font-display text-4xl sm:text-6xl font-black tracking-tight uppercase text-ink leading-none">
+        WHS PERCUSSION
+      </h1>
+    </header>
+
+    <!-- Purpose / What It's For Section -->
+    <section aria-labelledby="ui-purpose-heading" class="mb-8 border-l-4 border-varsity pl-4 sm:pl-5 py-1">
+      <h2 id="ui-purpose-heading" class="font-mono text-xs font-bold uppercase tracking-wider text-varsity mb-1.5">
+        WHAT THIS SERVER IS FOR
+      </h2>
+      <p id="ui-purpose-text" class="text-base sm:text-lg text-ink leading-snug font-medium">
+        An official hangout and survival multiplayer world for the WHS Percussion section to build, collaborate, and hang out between rehearsals and competitions.
+      </p>
+    </section>
+
+    <!-- Edition Switcher Tabs -->
+    <nav aria-label="Select Minecraft Edition" class="grid grid-cols-2 border-2 border-ink mb-6">
+      <button
+        id="tab-java"
+        type="button"
+        onclick="selectEdition('java', true)"
+        class="py-3.5 px-4 font-display text-sm sm:text-base font-extrabold uppercase tracking-wide text-center cursor-pointer border-r-2 border-ink bg-ink text-paper"
+      >
+        Java Edition
+      </button>
+      <button
+        id="tab-bedrock"
+        type="button"
+        onclick="selectEdition('bedrock', true)"
+        class="py-3.5 px-4 font-display text-sm sm:text-base font-extrabold uppercase tracking-wide text-center cursor-pointer bg-paper text-ink hover:bg-paperdark"
+      >
+        Bedrock Edition
+      </button>
+    </nav>
+
+    <!-- Connection Credentials Box -->
+    <section aria-label="Connection Details" class="print-box p-5 sm:p-6 mb-8">
+      <!-- JAVA CREDENTIALS VIEW -->
+      <div id="creds-java">
+        <div class="flex items-center justify-between border-b border-ink pb-2.5 mb-4">
+          <span class="font-mono text-xs font-bold uppercase tracking-wider text-ink">
+            JAVA EDITION CONNECTION (PC / MAC / LINUX)
+          </span>
+          <span class="font-mono text-xs font-bold text-varsity uppercase">
+            PRIMARY + DIRECT
+          </span>
+        </div>
+
+        <div class="space-y-4">
+          <!-- Primary Java Address -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+            <div>
+              <div class="font-mono text-[11px] font-semibold uppercase tracking-wider text-inkmuted">
+                SERVER ADDRESS
+              </div>
+              <code id="ui-java-primary" class="font-mono text-lg sm:text-xl font-bold text-ink select-all">
+                play.whspercussion.com
+              </code>
+            </div>
+            <button
+              type="button"
+              onclick="copyValue(SERVER_CONFIG.javaPrimaryIP, this)"
+              class="ink-btn font-mono text-xs font-bold uppercase px-4 py-2.5 bg-paper hover:bg-ink hover:text-paper text-ink cursor-pointer self-start sm:self-center shrink-0"
+            >
+              Copy
+            </button>
+          </div>
+
+          <hr class="border-ink/25" />
+
+          <!-- Fallback / Direct IP & Port -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+            <div>
+              <div class="font-mono text-[11px] font-semibold uppercase tracking-wider text-inkmuted">
+                DIRECT / FALLBACK IP &amp; PORT
+              </div>
+              <code id="ui-java-fallback" class="font-mono text-base sm:text-lg font-bold text-ink select-all">
+                play.whspercussion.com:16663
+              </code>
+            </div>
+            <button
+              type="button"
+              onclick="copyValue(SERVER_CONFIG.javaFallbackIP, this)"
+              class="ink-btn font-mono text-xs font-bold uppercase px-4 py-2.5 bg-paper hover:bg-ink hover:text-paper text-ink cursor-pointer self-start sm:self-center shrink-0"
+            >
+              Copy
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- BEDROCK CREDENTIALS VIEW -->
+      <div id="creds-bedrock" class="hidden">
+        <div class="flex items-center justify-between border-b border-ink pb-2.5 mb-4">
+          <span class="font-mono text-xs font-bold uppercase tracking-wider text-ink">
+            BEDROCK EDITION CONNECTION (MOBILE / WINDOWS / CONSOLE)
+          </span>
+          <span class="font-mono text-xs font-bold text-varsity uppercase">
+            ADDRESS + PORT
+          </span>
+        </div>
+
+        <div class="space-y-4">
+          <!-- Bedrock Server Address -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+            <div>
+              <div class="font-mono text-[11px] font-semibold uppercase tracking-wider text-inkmuted">
+                SERVER ADDRESS
+              </div>
+              <code id="ui-bedrock-ip" class="font-mono text-lg sm:text-xl font-bold text-ink select-all">
+                bedrock.whspercussion.com
+              </code>
+            </div>
+            <button
+              type="button"
+              onclick="copyValue(SERVER_CONFIG.bedrockIP, this)"
+              class="ink-btn font-mono text-xs font-bold uppercase px-4 py-2.5 bg-paper hover:bg-ink hover:text-paper text-ink cursor-pointer self-start sm:self-center shrink-0"
+            >
+              Copy
+            </button>
+          </div>
+
+          <hr class="border-ink/25" />
+
+          <!-- Bedrock Port -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+            <div>
+              <div class="font-mono text-[11px] font-semibold uppercase tracking-wider text-inkmuted">
+                PORT
+              </div>
+              <code id="ui-bedrock-port" class="font-mono text-lg sm:text-xl font-bold text-ink select-all">
+                19051
+              </code>
+            </div>
+            <button
+              type="button"
+              onclick="copyValue(SERVER_CONFIG.bedrockPort, this)"
+              class="ink-btn font-mono text-xs font-bold uppercase px-4 py-2.5 bg-paper hover:bg-ink hover:text-paper text-ink cursor-pointer self-start sm:self-center shrink-0"
+            >
+              Copy
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step-by-Step Instructions Section -->
+    <section aria-labelledby="ui-steps-title" class="mb-10">
+      <div class="flex items-baseline justify-between border-b-2 border-ink pb-2 mb-4">
+        <h2 id="ui-steps-title" class="font-display text-xl sm:text-2xl font-black uppercase tracking-tight text-ink">
+          HOW TO JOIN — JAVA EDITION
+        </h2>
+        <span id="ui-steps-count" class="font-mono text-xs font-bold text-inkmuted">
+          5 STEPS
+        </span>
+      </div>
+
+      <ol id="ui-steps-list" class="divide-y divide-ink/30 border-b-2 border-ink">
+        <!-- Populated dynamically from SERVER_CONFIG -->
+      </ol>
+
+      <!-- Console Practical Note (Shown on Bedrock Tab) -->
+      <div id="ui-console-box" class="hidden mt-6 bg-paperdark border-2 border-ink p-4 sm:p-5">
+        <h3 id="ui-console-heading" class="font-mono text-xs font-bold uppercase tracking-wider text-ink mb-1.5">
+          CONSOLE PLAYERS (XBOX, PLAYSTATION, SWITCH)
+        </h3>
+        <p id="ui-console-note" class="step-detail text-sm text-ink leading-relaxed">
+        </p>
+      </div>
+    </section>
+
+    <!-- Bottom Plain Utility Bar & Inline Config Drawer -->
+    <footer class="pt-4 border-t border-ink/40">
+      <div class="flex flex-wrap items-center justify-between gap-3 font-mono text-xs text-inkmuted">
+        <span>WHS PERCUSSION // SECTION SERVER</span>
+        <button
+          type="button"
+          id="btn-toggle-editor"
+          onclick="toggleEditorDrawer()"
+          class="underline font-bold text-ink hover:text-varsity cursor-pointer"
+        >
+          Edit Page Text / Config
+        </button>
+      </div>
+
+      <!-- Plain Collapsible Config Drawer -->
+      <div id="config-drawer" class="hidden mt-5 border-2 border-ink bg-paperdark p-5 sm:p-6">
+        <div class="flex items-center justify-between border-b-2 border-ink pb-3 mb-5">
+          <h3 class="font-display text-lg font-black uppercase text-ink">
+            Edit Page Text &amp; Server Config
+          </h3>
+          <button
+            type="button"
+            onclick="toggleEditorDrawer()"
+            class="ink-btn font-mono text-xs font-bold uppercase px-3 py-1.5 bg-paper text-ink hover:bg-ink hover:text-paper cursor-pointer"
+          >
+            Close
+          </button>
+        </div>
+
+        <div class="space-y-4 text-sm">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block font-mono text-xs font-bold uppercase mb-1">Server Title</label>
+              <input id="inp-serverTitle" type="text" class="w-full border-2 border-ink bg-paper px-3 py-2 font-display font-bold text-ink focus:outline-none focus:border-varsity" />
+            </div>
+            <div>
+              <label class="block font-mono text-xs font-bold uppercase mb-1">Subtitle Badge</label>
+              <input id="inp-subtitleBadge" type="text" class="w-full border-2 border-ink bg-paper px-3 py-2 font-mono text-xs text-ink focus:outline-none focus:border-varsity" />
+            </div>
+          </div>
+
+          <div>
+            <label class="block font-mono text-xs font-bold uppercase mb-1">What It's For (Purpose Description)</label>
+            <textarea id="inp-purposeText" rows="2" class="w-full border-2 border-ink bg-paper px-3 py-2 text-ink focus:outline-none focus:border-varsity"></textarea>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block font-mono text-xs font-bold uppercase mb-1">Java Primary Address</label>
+              <input id="inp-javaPrimaryIP" type="text" class="w-full border-2 border-ink bg-paper px-3 py-2 font-mono text-xs text-ink focus:outline-none focus:border-varsity" />
+            </div>
+            <div>
+              <label class="block font-mono text-xs font-bold uppercase mb-1">Java Direct / Fallback IP &amp; Port</label>
+              <input id="inp-javaFallbackIP" type="text" class="w-full border-2 border-ink bg-paper px-3 py-2 font-mono text-xs text-ink focus:outline-none focus:border-varsity" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block font-mono text-xs font-bold uppercase mb-1">Bedrock Server Address</label>
+              <input id="inp-bedrockIP" type="text" class="w-full border-2 border-ink bg-paper px-3 py-2 font-mono text-xs text-ink focus:outline-none focus:border-varsity" />
+            </div>
+            <div>
+              <label class="block font-mono text-xs font-bold uppercase mb-1">Bedrock Port</label>
+              <input id="inp-bedrockPort" type="text" class="w-full border-2 border-ink bg-paper px-3 py-2 font-mono text-xs text-ink focus:outline-none focus:border-varsity" />
+            </div>
+          </div>
+
+          <div>
+            <label class="block font-mono text-xs font-bold uppercase mb-1">
+              Java Steps <span class="font-normal text-inkmuted">(One per line: Step Title | Step Description)</span>
+            </label>
+            <textarea id="inp-javaSteps" rows="5" class="w-full border-2 border-ink bg-paper px-3 py-2 font-mono text-xs text-ink leading-relaxed focus:outline-none focus:border-varsity"></textarea>
+          </div>
+
+          <div>
+            <label class="block font-mono text-xs font-bold uppercase mb-1">
+              Bedrock Steps <span class="font-normal text-inkmuted">(One per line: Step Title | Step Description)</span>
+            </label>
+            <textarea id="inp-bedrockSteps" rows="5" class="w-full border-2 border-ink bg-paper px-3 py-2 font-mono text-xs text-ink leading-relaxed focus:outline-none focus:border-varsity"></textarea>
+          </div>
+
+          <div>
+            <label class="block font-mono text-xs font-bold uppercase mb-1">Console Player Note (Bedrock)</label>
+            <textarea id="inp-consoleNote" rows="2" class="w-full border-2 border-ink bg-paper px-3 py-2 font-mono text-xs text-ink focus:outline-none focus:border-varsity"></textarea>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-3 pt-2">
+            <button
+              type="button"
+              onclick="applyConfigEdits()"
+              class="ink-btn font-mono text-xs font-bold uppercase px-4 py-2.5 bg-paper hover:bg-ink hover:text-paper text-ink cursor-pointer"
+            >
+              Apply Changes
+            </button>
+            <button
+              type="button"
+              onclick="downloadStandaloneHTML()"
+              class="ink-btn font-mono text-xs font-bold uppercase px-4 py-2.5 bg-varsity hover:bg-ink text-paper cursor-pointer"
+            >
+              Download Updated HTML
+            </button>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- PAGE LOGIC                                                            -->
+  <!-- ===================================================================== -->
+  <script>
+    let activeEdition = 'java';
+
+    function renderAll() {
+      document.title = `${SERVER_CONFIG.serverTitle} — Minecraft Server Guide`;
+      document.getElementById('ui-server-title').textContent = SERVER_CONFIG.serverTitle;
+      document.getElementById('ui-subtitle-badge').textContent = SERVER_CONFIG.subtitleBadge;
+      document.getElementById('ui-notice-number').textContent = SERVER_CONFIG.noticeNumber;
+
+      document.getElementById('ui-purpose-heading').textContent = SERVER_CONFIG.purposeHeading;
+      document.getElementById('ui-purpose-text').textContent = SERVER_CONFIG.purposeText;
+
+      document.getElementById('ui-java-primary').textContent = SERVER_CONFIG.javaPrimaryIP;
+      document.getElementById('ui-java-fallback').textContent = SERVER_CONFIG.javaFallbackIP;
+      document.getElementById('ui-bedrock-ip').textContent = SERVER_CONFIG.bedrockIP;
+      document.getElementById('ui-bedrock-port').textContent = SERVER_CONFIG.bedrockPort;
+
+      document.getElementById('ui-console-heading').textContent = SERVER_CONFIG.consoleHeading;
+      document.getElementById('ui-console-note').innerHTML = SERVER_CONFIG.consoleNote;
+
+      selectEdition(activeEdition, false);
+    }
+
+    function selectEdition(edition, updateHash) {
+      activeEdition = edition === 'bedrock' ? 'bedrock' : 'java';
+
+      const tabJava = document.getElementById('tab-java');
+      const tabBedrock = document.getElementById('tab-bedrock');
+      const credsJava = document.getElementById('creds-java');
+      const credsBedrock = document.getElementById('creds-bedrock');
+      const stepsTitle = document.getElementById('ui-steps-title');
+      const stepsCount = document.getElementById('ui-steps-count');
+      const consoleBox = document.getElementById('ui-console-box');
+
+      if (activeEdition === 'java') {
+        tabJava.className = "py-3.5 px-4 font-display text-sm sm:text-base font-extrabold uppercase tracking-wide text-center cursor-pointer border-r-2 border-ink bg-ink text-paper";
+        tabBedrock.className = "py-3.5 px-4 font-display text-sm sm:text-base font-extrabold uppercase tracking-wide text-center cursor-pointer bg-paper text-ink hover:bg-paperdark";
+
+        credsJava.classList.remove('hidden');
+        credsBedrock.classList.add('hidden');
+        consoleBox.classList.add('hidden');
+
+        stepsTitle.textContent = "HOW TO JOIN — JAVA EDITION";
+        stepsCount.textContent = `${SERVER_CONFIG.javaSteps.length} STEPS`;
+        renderStepList(SERVER_CONFIG.javaSteps);
+      } else {
+        tabBedrock.className = "py-3.5 px-4 font-display text-sm sm:text-base font-extrabold uppercase tracking-wide text-center cursor-pointer bg-ink text-paper";
+        tabJava.className = "py-3.5 px-4 font-display text-sm sm:text-base font-extrabold uppercase tracking-wide text-center cursor-pointer border-r-2 border-ink bg-paper text-ink hover:bg-paperdark";
+
+        credsBedrock.classList.remove('hidden');
+        credsJava.classList.add('hidden');
+        consoleBox.classList.remove('hidden');
+
+        stepsTitle.textContent = "HOW TO JOIN — BEDROCK EDITION";
+        stepsCount.textContent = `${SERVER_CONFIG.bedrockSteps.length} STEPS`;
+        renderStepList(SERVER_CONFIG.bedrockSteps);
+      }
+
+      if (updateHash && window.history && window.history.replaceState) {
+        window.history.replaceState(null, '', `#${activeEdition}`);
+      }
+    }
+
+    function renderStepList(steps) {
+      const list = document.getElementById('ui-steps-list');
+      list.innerHTML = '';
+
+      steps.forEach((step, index) => {
+        const num = String(index + 1).padStart(2, '0');
+        const li = document.createElement('li');
+        li.className = "py-4 flex items-start gap-4";
+        li.innerHTML = `
+          <span class="font-mono text-sm font-bold text-varsity pt-0.5 shrink-0 select-none">
+            ${num}.
+          </span>
+          <div class="min-w-0 flex-1">
+            <h3 class="font-display text-base sm:text-lg font-extrabold text-ink leading-snug">
+              ${step.title}
+            </h3>
+            <p class="step-detail text-sm text-ink/90 mt-1 leading-relaxed">
+              ${step.detail}
+            </p>
+          </div>
+        `;
+        list.appendChild(li);
+      });
+    }
+
+    function copyValue(text, btn) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.setAttribute('readonly', '');
+      textarea.style.position = 'absolute';
+      textarea.style.left = '-9999px';
+      document.body.appendChild(textarea);
+      textarea.select();
+
+      try {
+        document.execCommand('copy');
+        const prev = btn.textContent;
+        btn.textContent = 'Copied';
+        btn.classList.add('bg-ink', 'text-paper');
+        btn.classList.remove('bg-paper', 'text-ink');
+
+        setTimeout(() => {
+          btn.textContent = prev;
+          btn.classList.remove('bg-ink', 'text-paper');
+          btn.classList.add('bg-paper', 'text-ink');
+        }, 1400);
+      } finally {
+        document.body.removeChild(textarea);
+      }
+    }
+
+    function toggleEditorDrawer() {
+      const drawer = document.getElementById('config-drawer');
+      const isHidden = drawer.classList.contains('hidden');
+
+      if (isHidden) {
+        document.getElementById('inp-serverTitle').value = SERVER_CONFIG.serverTitle;
+        document.getElementById('inp-subtitleBadge').value = SERVER_CONFIG.subtitleBadge;
+        document.getElementById('inp-purposeText').value = SERVER_CONFIG.purposeText;
+        document.getElementById('inp-javaPrimaryIP').value = SERVER_CONFIG.javaPrimaryIP;
+        document.getElementById('inp-javaFallbackIP').value = SERVER_CONFIG.javaFallbackIP;
+        document.getElementById('inp-bedrockIP').value = SERVER_CONFIG.bedrockIP;
+        document.getElementById('inp-bedrockPort').value = SERVER_CONFIG.bedrockPort;
+        document.getElementById('inp-consoleNote').value = SERVER_CONFIG.consoleNote;
+
+        document.getElementById('inp-javaSteps').value = SERVER_CONFIG.javaSteps
+          .map(s => `${s.title} | ${s.detail}`)
+          .join('\n');
+        document.getElementById('inp-bedrockSteps').value = SERVER_CONFIG.bedrockSteps
+          .map(s => `${s.title} | ${s.detail}`)
+          .join('\n');
+
+        drawer.classList.remove('hidden');
+        drawer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } else {
+        drawer.classList.add('hidden');
+      }
+    }
+
+    function parseStepLines(raw) {
+      return raw
+        .split('\n')
+        .map(line => line.trim())
+        .filter(Boolean)
+        .map(line => {
+          const splitIndex = line.indexOf('|');
+          if (splitIndex !== -1) {
+            return {
+              title: line.slice(0, splitIndex).trim(),
+              detail: line.slice(splitIndex + 1).trim()
+            };
+          }
+          return { title: line, detail: '' };
+        });
+    }
+
+    function applyConfigEdits() {
+      SERVER_CONFIG.serverTitle = document.getElementById('inp-serverTitle').value.trim() || SERVER_CONFIG.serverTitle;
+      SERVER_CONFIG.subtitleBadge = document.getElementById('inp-subtitleBadge').value.trim() || SERVER_CONFIG.subtitleBadge;
+      SERVER_CONFIG.purposeText = document.getElementById('inp-purposeText').value.trim() || SERVER_CONFIG.purposeText;
+      SERVER_CONFIG.javaPrimaryIP = document.getElementById('inp-javaPrimaryIP').value.trim() || SERVER_CONFIG.javaPrimaryIP;
+      SERVER_CONFIG.javaFallbackIP = document.getElementById('inp-javaFallbackIP').value.trim() || SERVER_CONFIG.javaFallbackIP;
+      SERVER_CONFIG.bedrockIP = document.getElementById('inp-bedrockIP').value.trim() || SERVER_CONFIG.bedrockIP;
+      SERVER_CONFIG.bedrockPort = document.getElementById('inp-bedrockPort').value.trim() || SERVER_CONFIG.bedrockPort;
+      SERVER_CONFIG.consoleNote = document.getElementById('inp-consoleNote').value.trim() || SERVER_CONFIG.consoleNote;
+
+      const parsedJava = parseStepLines(document.getElementById('inp-javaSteps').value);
+      if (parsedJava.length) SERVER_CONFIG.javaSteps = parsedJava;
+
+      const parsedBedrock = parseStepLines(document.getElementById('inp-bedrockSteps').value);
+      if (parsedBedrock.length) SERVER_CONFIG.bedrockSteps = parsedBedrock;
+
+      renderAll();
+    }
+
+    function downloadStandaloneHTML() {
+      applyConfigEdits();
+
+      const cloned = document.documentElement.cloneNode(true);
+      const drawer = cloned.querySelector('#config-drawer');
+      if (drawer) drawer.classList.add('hidden');
+
+      const scriptTag = cloned.querySelector('#server-config-script');
+      if (scriptTag) {
+        scriptTag.textContent = `\n    const SERVER_CONFIG = ${JSON.stringify(SERVER_CONFIG, null, 6)};\n  `;
+      }
+
+      const fullHTML = '<!DOCTYPE html>\n' + cloned.outerHTML;
+      const blob = new Blob([fullHTML], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'whs-percussion-minecraft.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const hash = window.location.hash.replace('#', '').toLowerCase();
+      if (hash === 'bedrock' || hash === 'java') {
+        activeEdition = hash;
+      }
+      renderAll();
+    });
+  </script>
+</body>
+</html>
